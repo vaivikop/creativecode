@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Module 7 Workspace: Sound and Music</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+        .workspace-info {
+            text-align: center;
+            padding: 20px;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        p {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="workspace-info">
+        <h2>Sound and Music Workspace</h2>
+        <p>Explore the multisensory experience of combining visuals with audio. Use the following controls:</p>
+        <ul>
+            <li><strong>'p' Key:</strong> Play or pause the audio</li>
+            <li><strong>'v' Key:</strong> Adjust the visual effect</li>
+        </ul>
+    </div>
+    <script>
+        let audio;
+        let visualEffect = 0;
+
+        function preload() {
+            audio = loadSound("music.mp3");
+        }
+
+        function setup() {
+            createCanvas(400, 400);
+        }
+
+        function draw() {
+            background(240);
+            
+            // Visual effect based on the 'visualEffect' variable
+            if (visualEffect === 0) {
+                fill(150, 0, 0);
+                rect(50, 50, 100, 100);
+            } else if (visualEffect === 1) {
+                ellipse(200, 200, 150, 150);
+            }
+
+            // Audio visualization
+            let level = audio.getLevel();
+            let size = map(level, 0, 1, 0, 200);
+            noStroke();
+            fill(0, 0, 150, 100);
+            ellipse(width / 2, height / 2, size, size);
+        }
+
+        function keyTyped() {
+            if (key === 'p') {
+                if (audio.isPlaying()) {
+                    audio.pause();
+                } else {
+                    audio.play();
+                }
+            } else if (key === 'v') {
+                // Toggle between visual effects
+                visualEffect = (visualEffect + 1) % 2;
+            }
+        }
+    </script>
+</body>
+</html>

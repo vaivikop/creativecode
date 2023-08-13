@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Shapes Workspace</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        function setup() {
+            createCanvas(400, 400);
+            background(240);
+        }
+
+        function draw() {
+            if (mouseIsPressed) {
+                let r = random(255);
+                let g = random(255);
+                let b = random(255);
+                fill(r, g, b);
+                noStroke();
+                ellipse(mouseX, mouseY, random(20, 50), random(20, 50));
+            }
+        }
+    </script>
+</body>
+</html>

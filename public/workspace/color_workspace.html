@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Workspace</title>
+    <style>
+        body {
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: Arial, sans-serif;
+        }
+      .copy-button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .copy-button:hover {
+            background-color: #0056b3;
+        }
+        #color-theory-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            max-width: 400px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+        #color-picker {
+            margin-bottom: 20px;
+        }
+        #color-preview {
+            width: 100px;
+            height: 100px;
+            margin: 0 auto 20px;
+            border: 1px solid #000;
+        }
+        #color-info {
+            font-size: 14px;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+  <div id="color-theory-container">
+        <h2>Exploring Color Theory</h2>
+        <p>Discover the secrets of color theory and how it can impact your artwork. Dive into the world of colors, gradients, and harmonious palettes.</p>
+        <input type="color" id="color-picker">
+        <div id="color-preview"></div>
+        <p id="color-info">Select a color to learn about its RGB and HEX values.</p>
+        <button id="copy-button" class="copy-button">Copy HEX</button>
+    </div>
+    <script>
+        const colorPicker = document.getElementById('color-picker');
+        const colorPreview = document.getElementById('color-preview');
+        const colorInfo = document.getElementById('color-info');
+        
+        colorPicker.addEventListener('input', () => {
+            const selectedColor = colorPicker.value;
+            colorPreview.style.backgroundColor = selectedColor;
+            
+            const rgbValues = selectedColor.toUpperCase();
+            const hexValue = selectedColor.substr(1).toUpperCase();
+            colorInfo.innerHTML = `RGB: ${rgbValues}<br>HEX: #${hexValue}`;
+        });
+      const copyButton = document.getElementById('copy-button');
+        copyButton.addEventListener('click', () => {
+            const hexValue = colorPicker.value.substr(1);
+            copyToClipboard(hexValue);
+            copyButton.innerText = 'Copied!';
+            setTimeout(() => {
+                copyButton.innerText = 'Copy HEX';
+            }, 1500);
+        });
+
+        function copyToClipboard(text) {
+            const textarea = document.createElement('textarea');
+            textarea.value = text;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+        }
+    </script>
+</body>
+</html>

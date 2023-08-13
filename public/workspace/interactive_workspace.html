@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Workspace</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.0/p5.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        canvas-container {
+             display: block;
+            margin: 0 auto;
+            margin-top: 20px;
+            border: 1px solid #000;
+          margin-left: 50%;
+        }
+        canvas {
+            border: 1px solid #000;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div id="canvas-container">
+        <script>
+            function setup() {
+                createCanvas(400, 400);
+                background(240);
+            }
+
+            function draw() {
+                fill(mouseX % 255, mouseY % 255, (mouseX + mouseY) % 255);
+                ellipse(mouseX, mouseY, 50, 50);
+            }
+        </script>
+    </div>
+    <div class="button-container">
+        <button class="button" onclick="goBack()">Back</button>
+        <button class="button" onclick="goToModule5()">Go to Module 5</button>
+    </div>
+    <script>
+        function goBack() {
+            window.history.back();
+        }
+
+        function goToModule5() {
+            window.location.href = '/module5.html';
+        }
+    </script>
+</body>
+</html>

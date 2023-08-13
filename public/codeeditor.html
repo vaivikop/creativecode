@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/mode/javascript/javascript.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/hint/show-hint.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.62.0/addon/hint/javascript-hint.min.js"></script>
+    <title>Interactive Code Editor</title>
+</head>
+<body>
+    <header>
+        <h1>Interactive Code Editor</h1>
+      
+    </select>
+</div>
+    </header>
+    <main>
+        <div class="editor-container">
+            <div class="editor">
+                <h2>HTML</h2>
+                <textarea id="html-editor"><p>Hello, world!</p></textarea>
+            </div>
+            <div class="editor">
+                <h2>CSS</h2>
+                <textarea id="css-editor">body { background-color: lightblue; }</textarea>
+            </div>
+            <div class="editor">
+                <h2>JavaScript</h2>
+                <textarea id="js-editor">document.body.style.color = "red";</textarea>
+            </div>
+          
+        </div>
+        <div class="output-container">
+            <h2>Output</h2>
+            <iframe id="output-frame"></iframe>
+        </div>
+        <div class="action-buttons">
+            <button id="run-button">Run Code</button>
+            <button id="save-button">Save Code</button>
+            <button id="load-button">Load Code</button>
+           <li><a href="index.html">Go Home</a></li>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
